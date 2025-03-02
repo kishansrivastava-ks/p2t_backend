@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const { config } = require("./config/config");
 const { errorHandler } = require("./middlewares/errorHandler");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -30,7 +31,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Routes will be added here
-// app.use("/api/v1", routes);
+app.use("/api/v1/users", userRoutes);
 // Error Handling
 app.use(errorHandler);
 
